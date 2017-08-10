@@ -64,8 +64,14 @@ class CategoryController extends AppController {
                     <div class="col-md-5" style="text-align: end;">
                      <div style="clear:both;"></div>
                      <div>
-                     <span style="width:20%">Сортировать по:</span><a class="btn btn-default waves-effect waves-light" style="margin-right: 0px;margin-top: 0px;width: 40%;margin-left: 10px;margin-bottom: 10px;" href="'.substr(Url::to(''),0,strpos(Url::to(''),'/byprice')).'/byprice/po-popilarnosti/0" title="" rel="nofollow">Популярности</a>         
-                     <a class="btn btn-danger waves-effect waves-light" style="margin-left: -4px;margin-top: 0px;width: 20%;margin-right: 15px;margin-bottom: 10px;" href="'.substr(Url::to(''),0,strpos(Url::to(''),'/byprice')).'/byprice/po-cene/1" title="" rel="nofollow">Цене</a>
+                     <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12" style=" margin-top: 20px;"><span style="width:100%;">Сортировать по:</span></div>
+                     <br class="visible-xs">
+                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-7" style="padding:0;margin:0;">
+                     <a class="btn btn-default waves-effect waves-light col-md-6" style="width: 100%;text-overflow: ellipsis;" href="'.substr(Url::to(''),0,strpos(Url::to(''),'/byprice')).'/byprice/po-popilarnosti/0" title="" rel="nofollow">Популярности</a>     
+                     </div>
+                     <div class="col-md-3 col-lg-3 col-sm-3 col-xs-5" style="padding:0;margin:0;">    
+                     <a class="btn btn-danger waves-effect waves-light col-md-3" style="width: 80%;text-overflow: ellipsis;" href="'.substr(Url::to(''),0,strpos(Url::to(''),'/byprice')).'/byprice/po-cene/1" title="" rel="nofollow">Цене</a>
+                     </div>
                      <div style="clear:both;"></div>
                     </div>
                    </div>';

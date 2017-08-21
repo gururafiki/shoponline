@@ -22,7 +22,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $model->spec1_name.' : '.Categories::findOne(['id'=>$model->spec1_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec1_id)) echo $model->spec1_name.' : '.Categories::findOne(['id'=>$model->spec1_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec1_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -33,7 +33,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec1_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec2_name.' : '.Categories::findOne(['id'=>$model->spec2_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec2_id)) echo $model->spec2_name.' : '.Categories::findOne(['id'=>$model->spec2_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec2_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -44,7 +44,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec2_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec3_name.' : '.Categories::findOne(['id'=>$model->spec3_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec3_id)) echo $model->spec3_name.' : '.Categories::findOne(['id'=>$model->spec3_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec3_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -55,7 +55,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec3_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec4_name.' : '.Categories::findOne(['id'=>$model->spec4_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec4_id)) echo $model->spec4_name.' : '.Categories::findOne(['id'=>$model->spec4_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec4_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -66,7 +66,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec4_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec5_name.' : '.Categories::findOne(['id'=>$model->spec5_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec5_id)) echo $model->spec5_name.' : '.Categories::findOne(['id'=>$model->spec5_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec5_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -77,7 +77,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec5_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec6_name.' : '.Categories::findOne(['id'=>$model->spec6_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec6_id)) echo $model->spec6_name.' : '.Categories::findOne(['id'=>$model->spec6_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec6_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -88,7 +88,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec6_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec7_name.' : '.Categories::findOne(['id'=>$model->spec7_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec7_id)) echo $model->spec7_name.' : '.Categories::findOne(['id'=>$model->spec7_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec7_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -99,7 +99,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec7_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec8_name.' : '.Categories::findOne(['id'=>$model->spec8_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec8_id)) echo $model->spec8_name.' : '.Categories::findOne(['id'=>$model->spec8_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec8_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -110,7 +110,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec8_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec9_name.' : '.Categories::findOne(['id'=>$model->spec9_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec9_id)) echo $model->spec9_name.' : '.Categories::findOne(['id'=>$model->spec9_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec9_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -121,7 +121,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec9_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec10_name.' : '.Categories::findOne(['id'=>$model->spec10_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec10_id)) echo $model->spec10_name.' : '.Categories::findOne(['id'=>$model->spec10_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec10_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -132,7 +132,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec10_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec11_name.' : '.Categories::findOne(['id'=>$model->spec11_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec11_id)) echo $model->spec11_name.' : '.Categories::findOne(['id'=>$model->spec11_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec11_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -143,7 +143,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec11_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec12_name.' : '.Categories::findOne(['id'=>$model->spec12_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec12_id)) echo $model->spec12_name.' : '.Categories::findOne(['id'=>$model->spec12_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec12_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -154,7 +154,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec12_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec13_name.' : '.Categories::findOne(['id'=>$model->spec13_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec13_id)) echo $model->spec13_name.' : '.Categories::findOne(['id'=>$model->spec13_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec13_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -165,7 +165,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec13_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec14_name.' : '.Categories::findOne(['id'=>$model->spec14_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec14_id)) echo $model->spec14_name.' : '.Categories::findOne(['id'=>$model->spec14_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec14_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -176,7 +176,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec14_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec15_name.' : '.Categories::findOne(['id'=>$model->spec15_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec15_id)) echo $model->spec15_name.' : '.Categories::findOne(['id'=>$model->spec15_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec15_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -187,7 +187,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec15_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec16_name.' : '.Categories::findOne(['id'=>$model->spec16_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec16_id)) echo $model->spec16_name.' : '.Categories::findOne(['id'=>$model->spec16_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec16_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -198,7 +198,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec16_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec17_name.' : '.Categories::findOne(['id'=>$model->spec17_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec17_id)) echo $model->spec17_name.' : '.Categories::findOne(['id'=>$model->spec17_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec17_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -209,7 +209,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec17_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec18_name.' : '.Categories::findOne(['id'=>$model->spec18_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec18_id)) echo $model->spec18_name.' : '.Categories::findOne(['id'=>$model->spec18_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec18_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -220,7 +220,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec18_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec19_name.' : '.Categories::findOne(['id'=>$model->spec19_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec19_id)) echo $model->spec19_name.' : '.Categories::findOne(['id'=>$model->spec19_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec19_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -231,7 +231,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec19_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec20_name.' : '.Categories::findOne(['id'=>$model->spec20_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec20_id)) echo $model->spec20_name.' : '.Categories::findOne(['id'=>$model->spec20_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec20_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -242,7 +242,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec20_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec21_name.' : '.Categories::findOne(['id'=>$model->spec21_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec21_id)) echo $model->spec21_name.' : '.Categories::findOne(['id'=>$model->spec21_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec21_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -253,7 +253,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec21_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec22_name.' : '.Categories::findOne(['id'=>$model->spec22_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec22_id)) echo $model->spec22_name.' : '.Categories::findOne(['id'=>$model->spec22_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec22_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -264,7 +264,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec22_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec23_name.' : '.Categories::findOne(['id'=>$model->spec23_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec23_id)) echo $model->spec23_name.' : '.Categories::findOne(['id'=>$model->spec23_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec23_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -275,7 +275,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec23_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec24_name.' : '.Categories::findOne(['id'=>$model->spec24_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec24_id)) echo $model->spec24_name.' : '.Categories::findOne(['id'=>$model->spec24_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec24_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '
@@ -286,7 +286,7 @@ use app\modules\adminpanel\models\Categories;
 
     <?= $form->field($model, 'spec24_id')->dropDownList($arrSpecsId,['prompt' => '']) ?>
 
-    <?php echo $model->spec25_name.' : '.Categories::findOne(['id'=>$model->spec25_id])->name.'<br>'; ?>
+    <?php if(!empty($model->spec25_id)) echo $model->spec25_name.' : '.Categories::findOne(['id'=>$model->spec25_id])->name.'<br>'; ?>
     <?= $form->field($model, 'spec25_name')->dropDownList($arrSpecs,[
         'prompt' => '',
         'onchange' => '

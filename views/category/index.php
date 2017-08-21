@@ -10,18 +10,18 @@ $this->title='Наши продукты';
           <!-- Subscription widget -->
           <div class="card-panel">
             <div class="row">
-              <form class="col-md-12">
+              <form class="col-md-12" action="/site/contact" method="post" role="form">
                 <h5>Заказать консультацию</h5>
                 <h6>Вы можете абсолютно бесплатно заказать консультацию, вписав ваше имя и телефон в поля ниже</h6>
                 <br>
                 <div class="input-field">
                   <i class="material-icons prefix">account_circle</i>
-                  <input id="icon_prefix" type="text" class="validate">
+                  <input id="icon_prefix" name="name" type="text" class="validate">
                   <label for="icon_prefix">Ваше имя</label>
                 </div>
                 <div class="input-field">
                   <i class="material-icons prefix">phone</i>
-                  <input id="icon_telephone" type="tel" class="validate">
+                  <input id="icon_telephone" name="phone" type="tel" class="validate">
                   <label for="icon_telephone">Ваш телефон</label>
                 </div>
               </form>

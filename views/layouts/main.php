@@ -111,36 +111,50 @@ AppAsset::register($this);
         </div>
         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
             <h3 style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;">ElectroVolt</h3>
-            <form class="col-md-12">
+            <form class="col-md-12" action="/site/message" method="get" role="form">
                 <div class="input-field col-md-4">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" name="name" type="text" class="validate">
                     <label for="icon_prefix">Ваше имя</label>
                 </div>
                 <div class="input-field col-md-4">
                     <i class="material-icons prefix">phone</i>
-                    <input id="icon_telephone" type="tel" class="validate">
+                    <input id="icon_telephone" name="phone" type="tel" class="validate">
                     <label for="icon_telephone">Ваш телефон</label>
                 </div>
                 <div class="text-center col-md-4">
-                    <button type="button" class="btn btn-info waves-effect waves-light">Заказать звонок!</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Заказать звонок!</button>
+                </div>
+                <div class="text-center col-md-12">
+                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
+                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+                        <div class="col-md-10">Главный офис<br> +38 (044) 277-49-36</div>
+                    </div>
+                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
+                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+                        <div class="col-md-10">Татьяна Павловна<br> +38 (067) 466-93-69</div>
+                    </div>
+                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
+                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+                        <div class="col-md-10">Инна Васильевна<br> +38 (067) 405-03-35</div>
+                    </div>
                 </div>
             </form>
         </div>
         <div title="Курс валют от ПриватБанк Украина" style="position: absolute;right: 0;" class="course btn btn-info waves-effect waves-light col-sm-12 col-lg-3 col-xs-12 col-md-3 hidden-xs hidden-sm">
             <?php
-                $data=file_get_contents('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
-                $courses=json_decode($data,true);
-                echo '<div class="table-responsive"><table class="table"><thead><tr><th>Валюта</th><th>Покупка</th><th>Продажа</th></tr></thead><tbody>';
-                foreach ($courses as $key_nominals=>$array_nominals){
-                    echo '<tr>';
-                    foreach ($array_nominals as $key => $value){
-                        if($key!='base_ccy')
-                            echo '<td>'.$value.'</td>';
-                    }
-                    echo '</tr>';
-                }
-                echo '</tbody></table></div>';
+                // $data=file_get_contents('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
+                // $courses=json_decode($data,true);
+                // echo '<div class="table-responsive"><table class="table"><thead><tr><th>Валюта</th><th>Покупка</th><th>Продажа</th></tr></thead><tbody>';
+                // foreach ($courses as $key_nominals=>$array_nominals){
+                //     echo '<tr>';
+                //     foreach ($array_nominals as $key => $value){
+                //         if($key!='base_ccy')
+                //             echo '<td>'.$value.'</td>';
+                //     }
+                //     echo '</tr>';
+                // }
+                // echo '</tbody></table></div>';
             ?>
         </div>
     </div>

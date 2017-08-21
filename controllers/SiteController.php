@@ -103,6 +103,20 @@ class SiteController extends Controller
      *
      * @return string
      */
+    public function actionMessage()
+    {   
+        $name = Yii::$app->request->get('name');
+        $phone = Yii::$app->request->get('phone');
+        Yii::$app->mailer->compose()
+        ->setFrom('inna.shohina@electrovolt.kiev.ua')
+        ->setTo('inna.shohina@electrovolt.kiev.ua')
+        ->setSubject('У '.$name.'для вас вопрос')
+        ->setTextBody('Свяжитесь с '.$phone)
+        ->send();
+
+        return $this->render('contact-modal',compact('name','phone'));
+    }
+
     public function actionContact()
     {
         $model = new ContactForm();

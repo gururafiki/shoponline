@@ -1,12 +1,4 @@
 <div class="adminpanel-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<a type="button" href="/adminpanel/products" class="btn btn-default waves-effect waves-light" >Управлять продукцией!</a>
+<a type="button" href="adminpanel/categories" class="btn btn-info waves-effect waves-light" >Управлять категориями!</a>
 </div>

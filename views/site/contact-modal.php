@@ -1,0 +1,1 @@
+<h3 style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;">Спасибо за обращение, <?=$name?> ! Ожидайте ответ на <?=$phone?></h3>

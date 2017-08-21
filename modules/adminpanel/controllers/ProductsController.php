@@ -122,6 +122,57 @@ class ProductsController extends Controller
             $category=Categories::findOne(['id'=>$model->category_id]);
             $model->category_name=$category->name;
             $model->save();
+            $productId=$model->id;
+            if(UploadedFile::getInstance($model,'photo_1')){
+                $image=UploadedFile::getInstance($model,'photo_1');
+                $imgName= 'product_'.$productId.'_1.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_1=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_2')){
+                $image=UploadedFile::getInstance($model,'photo_2');
+                $imgName= 'product_'.$productId.'_2.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_2=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_3')){
+                $image=UploadedFile::getInstance($model,'photo_3');
+                $imgName= 'product_'.$productId.'_3.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_3=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_4')){
+                $image=UploadedFile::getInstance($model,'photo_4');
+                $imgName= 'product_'.$productId.'_4.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_4=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_5')){
+                $image=UploadedFile::getInstance($model,'photo_5');
+                $imgName= 'product_'.$productId.'_5.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_5=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_6')){
+                $image=UploadedFile::getInstance($model,'photo_6');
+                $imgName= 'product_'.$productId.'_6.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_6=$imgName;
+            }
+            if(UploadedFile::getInstance($model,'photo_8')){
+                $image=UploadedFile::getInstance($model,'photo_8');
+                $imgName= 'product_'.$productId.'_8.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_8=$imgName;
+            }
+
+            if(UploadedFile::getInstance($model,'photo_9')){
+                $image=UploadedFile::getInstance($model,'photo_9');
+                $imgName= 'product_'.$productId.'_9.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productImgPath').'/'.$imgName);
+                $model->photo_9=$imgName;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

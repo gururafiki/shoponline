@@ -80,10 +80,15 @@ class CategoryController extends AppController {
 
     public function actionSearch(){
         $search = Yii::$app->request->get('search');
-        $query = Product::find()->where(['like','name',$search])->orwhere(['like','type',$search])->orwhere(['like','sub_type',$search])->orwhere(['=','id',$search])->orwhere(['like','specs',$search])->orwhere(['like','keywords',$search])->orwhere(['like','describtion',$search]);
+        $query = Product::find()->where(['like','name',$search])->orwhere(['like','type',$search])->orwhere(['like','sub_type',$search])->orwhere(['=','id',$search])->orwhere(['like','keywords',$search])->orwhere(['like','describtion',$search]);
         $pages= new Pagination(['totalCount' => $query->count(), 'pageSize' => 15,'forcePageParam' => false,'pageSizeParam' => false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
+        $first=Product::find()->where(['category_name'=>'Источники питания'])->limit(4)->all();
+        $second=Product::find()->where(['category_name'=>'Светодиодные ленты'])->limit(4)->all();
+        $third =Product::find()->where(['category_name'=>'Светодиоды'])->limit(4)->all();
+        $fourth=Product::find()->where(['category_name'=>'Модули'])->limit(4)->all();
+        $fifth =Product::find()->where(['category_name'=>'Коробочки'])->limit(4)->all();
         $categories=Category::find()->all();
-        return $this->render('search',compact('products','pages','search','categories'));
+        return $this->render('search',compact('products','pages','search','categories','first','second','third','fourth','fifth'));
     }
 }

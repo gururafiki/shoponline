@@ -107,7 +107,7 @@ class MenuWidget extends  Widget{
             //отлов выбраных категорий(Тип+2=айди)
             while(isset($arrayParams[$i])){
                 $i++;
-                if($i%3==0 && $i!=0){
+                if($i%3==0 && $i!=0 && isset($this->current)){
                     $flag=true;
                     foreach ($this->current as $item) {
                         if($item==$arrayParams[$i]){
@@ -118,13 +118,13 @@ class MenuWidget extends  Widget{
                     if($flag==true)
                     $this->current[] = $arrayParams[$i];
                 }
-                if($arrayParams[$i]==$key){
+                if(!empty($arrayParams[$i]) && $arrayParams[$i]==$key){
                     $i=$i+2;
                     $this->managed[$key_name]['id']=$arrayParams[$i];
                     $processed=Category::find()->where(['id' => $arrayParams[$i]])->one();
                     $this->current[]=$processed->parent_id;
                 }
-                else {
+                elseif(!empty($arrayParams[$i])) {
                     $buf_url .= '/' . $arrayParams[$i];
                 }
             }

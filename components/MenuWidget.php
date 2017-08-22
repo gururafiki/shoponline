@@ -43,7 +43,7 @@ class MenuWidget extends  Widget{
     public function run(){
         $arr=explode('/',$this->url);
         $url_str=$this->url;
-        if($arr[1]!='category'){//0=>''1=>category,2=>category_parent,3=>category_name,4=>category_id,5=>spec_1name,...4=>spec_id,5=>spec_2name,6=>spec_id,7=>spec_3name,8=>spec_id,9=>spec_4name,10=>spec_id,11=>spec_5name,12=>spec_id,13=>spec_6name,14=>spec_id,
+        if($arr[1]!='category' || ($arr[1]=='category' && $arr[2]=='index')){//0=>''1=>category,2=>category_parent,3=>category_name,4=>category_id,5=>spec_1name,...4=>spec_id,5=>spec_2name,6=>spec_id,7=>spec_3name,8=>spec_id,9=>spec_4name,10=>spec_id,11=>spec_5name,12=>spec_id,13=>spec_6name,14=>spec_id,
             $arr[1]='category';
             $arr[2]='';
             $arr[3]='';
@@ -57,18 +57,23 @@ class MenuWidget extends  Widget{
         $i=2;
         $sub_url='';
         while(isset($arr[$i])){
-            if($i==2){
-                $sub_url .= '/' . $arr[$i] . '/' . $arr[$i + 1] . '/' . $arr[$i + 2];
-                $this->managed['category']['id'] = $arr[$i + 2];
-                $this->managed['category']['name'] = $arr[$i + 1];
-                $current=$arr[$i + 2];
-                $i = $i + 3;
+            if($arr[$i]!='page'){
+               if($i==2){
+                   $sub_url .= '/' . $arr[$i] . '/' . $arr[$i + 1] . '/' . $arr[$i + 2];
+                   $this->managed['category']['id'] = $arr[$i + 2];
+                   $this->managed['category']['name'] = $arr[$i + 1];
+                   $current=$arr[$i + 2];
+                   $i = $i + 3;
+               }
+               else {
+                   $sub_url .= '/' . $arr[$i] . '/' . $arr[$i + 1] . '/' . $arr[$i + 2];
+                   $this->managed[$arr[$i]]['id'] = $arr[$i + 2];
+                   $this->managed[$arr[$i]]['name'] = $arr[$i + 1];
+                   $i = $i + 3;
+               }
             }
-            else {
-                $sub_url .= '/' . $arr[$i] . '/' . $arr[$i + 1] . '/' . $arr[$i + 2];
-                $this->managed[$arr[$i]]['id'] = $arr[$i + 2];
-                $this->managed[$arr[$i]]['name'] = $arr[$i + 1];
-                $i = $i + 3;
+            else{
+                break;
             }
         }
         $managed=Category::find()->where(['id' => $this->managed['category']['id']])->one();
@@ -128,7 +133,7 @@ class MenuWidget extends  Widget{
                     $buf_url .= '/' . $arrayParams[$i];
                 }
             }
-            $buf_url=substr($buf_url,0,-1);
+            $buf_url.='/';
             $this->data = Category::find()->where(['name' => $key_name])->orWhere(['parent_name' => $key_name])->indexBy('id')->asArray()->all();
             $this->tree = $this->getTree();
             $this->menuHtml=$this->menuHtml.$this->getMenuHtml($this->tree,$key_name,$managed,$current,'/category'.$buf_url);

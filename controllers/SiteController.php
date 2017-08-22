@@ -108,26 +108,92 @@ class SiteController extends Controller
         $name = Yii::$app->request->get('name');
         $phone = Yii::$app->request->get('phone');
         Yii::$app->mailer->compose()
-        ->setFrom('inna.shohina@electrovolt.kiev.ua')
-        ->setTo('inna.shohina@electrovolt.kiev.ua')
-        ->setSubject('У '.$name.'для вас вопрос')
+        ->setFrom('info@electrovolt.kiev.ua')
+        ->setTo('info@electrovolt.kiev.ua')
+        ->setSubject('У '.$name.' для вас вопрос')
         ->setTextBody('Свяжитесь с '.$phone)
         ->send();
 
-        return $this->render('contact-modal',compact('name','phone'));
+        return $this->render('register',compact('name','phone'));
+    }
+    public function actionAuth()
+    {   
+        $name = Yii::$app->request->get('name');
+        $password = Yii::$app->request->get('password');
+
+        if(!empty($name) && !empty($password)){
+            $error='Well done';
+            return $this->render('register',compact('error'));
+        }
+        else{
+            $error='Упс... Что-то пошло не так';
+            return $this->render('auth',compact('error'));
+        }
+    }
+    public function actionRegister()
+    {   
+        $name = Yii::$app->request->get('name');
+        $mail = Yii::$app->request->get('mail');
+        $phone = Yii::$app->request->get('phone');
+        $password = Yii::$app->request->get('password');
+        $verify = Yii::$app->request->get('verify');
+
+        if(strlen($name)>5 && strcasecmp($password, $verify)==0 && strlen($password)>4 && strpos($mail,'@')!=false && strpos($mail,'@')!=strlen($mail) && strpos($mail,'@')!=0 && strrpos($mail,'.')!=false && strpos($mail,'@')<strrpos($mail,'.')){
+            $error='Well done';
+            return $this->render('register',compact('error'));
+        }
+        elseif(strlen($name)<=5){
+            $error='Слишком короткое имя';
+            return $this->render('register',compact('error'));
+        }
+        elseif(strcasecmp($password, $verify)!=0){
+            $error='Пароли не совпадают';
+            return $this->render('register',compact('error'));
+        }
+        elseif(strlen($password)<=4){
+            $error='Слишком короткий пароль';
+            return $this->render('register',compact('error'));
+        }
+        elseif(strpos($mail,'@')===false || strpos($mail,'@')==strlen($mail) || strpos($mail,'@')==0 || strrpos($mail,'.')===false || strpos($mail,'@')>strrpos($mail,'.')){
+            $error='Что-то не так с e-mail';
+            return $this->render('register',compact('error'));
+        }
+        else{
+            $error='Упс... Что-то пошло не так';
+            return $this->render('register',compact('error'));
+        }
+        // $name = Yii::$app->request->get('name');
+        // $phone = Yii::$app->request->get('phone');
+        // Yii::$app->mailer->compose()
+        // ->setFrom('inna.shohina@electrovolt.kiev.ua')
+        // ->setTo('inna.shohina@electrovolt.kiev.ua')
+        // ->setSubject('У '.$name.' для вас вопрос')
+        // ->setTextBody('Свяжитесь с '.$phone)
+        // ->send();
+// 
+        // return $this->render('auth',compact('name','phone'));
     }
 
+    public function actionQuestion()
+    {
+        $name = Yii::$app->request->get('name');
+        $mail = Yii::$app->request->get('mail');
+        $sender='new_question@electrovolt.kiev.ua';
+        $phone = Yii::$app->request->get('phone');
+        $subject = Yii::$app->request->get('subject');
+        $body = Yii::$app->request->get('body');
+        Yii::$app->mailer->compose()
+        ->setFrom($sender)
+        ->setTo('info@electrovolt.kiev.ua')
+        ->setSubject($subject)
+        ->setTextBody('Имя: '.$name.' Телефон: '.$phone.' e-mail: '.$mail.' . Вопрос:'. $body)
+        ->send();
+
+        return $this->render('register',compact('name','phone'));
+    }
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->render('contact');
     }
 
     /**

@@ -11,61 +11,75 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
-
-            </div>
-            <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5081.263880151969!2d30.463961!3d50.447956!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI2JzUyLjYiTiAzMMKwMjcnNTAuMyJF!5e0!3m2!1sru!2sus!4v1500381117981" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div>
-        </div>
-
-    <?php endif; ?>
+<form class="col-md-6" action="/site/question" method="get" role="form">
+    <div class="input-field col-md-8">
+        <i class="material-icons prefix">text</i>
+        <input id="icon_text" name="subject" type="text" class="validate">
+        <label for="icon_text">Тема</label>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="input-field col-md-8">
+        <i class="material-icons prefix">body</i>
+        <input id="icon_body" name="body" type="text" class="validate">
+        <label for="icon_body">Ваш вопрос</label>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="input-field col-md-8">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="icon_prefix" name="name" type="text" class="validate">
+        <label for="icon_prefix">Ваше имя</label>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="input-field col-md-8">
+        <i class="material-icons prefix">phone</i>
+        <input id="icon_telephone" name="phone" type="tel" class="validate">
+        <label for="icon_telephone">Ваш телефон</label>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="input-field col-md-8">
+        <i class="material-icons prefix">mail</i>
+        <input id="icon_mail" name="mail" type="text" class="validate">
+        <label for="icon_mail">E-mail</label>
+    </div>
+    <div style="clear:both;"></div>
+    
+    <div class="col-md-4 ">
+        <button type="submit" class="btn btn-info waves-effect waves-light">Отправить!</button>
+    </div>
+</form>
+<div class="col-md-6">
+    <div class="col-md-8" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;font-size: 15px;">
+        <div class="col-md-2"><i class="material-icons prefix" style="font-size: 35px;">home</i></div>
+        <div class="col-md-10" style="margin-top: 3px;">Ул. Политехническая ,33 офис 508</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">mail</i></div>
+        <div class="col-md-10" style="margin-top: 3px;">info@electrovolt.kiev.ua</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> +38 (044) 277-49-36</div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr class="col-md-12">
+    <div class="col-md-8" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;font-size: 15px;">
+        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">account_circle</i></div>
+        <div class="col-md-10" style="margin-top: 3px;">Татьяна Стахова</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">mail</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> tatyana@electrovolt.kiev.ua</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> +38 (067) 466-93-69</div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr class="col-md-12">
+    <div class="col-md-8" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;font-size: 15px;">
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">account_circle</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> Инна Шохина</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">mail</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> Inna.Shohina@electrovolt.kiev.ua</div>
+        <div style="clear:both;"></div>
+        <div class="col-md-2" ><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
+        <div class="col-md-10" style="margin-top: 3px;"> +38 (067) 405-03-35</div>
+    </div>
 </div>

@@ -13,13 +13,13 @@ class CategoryController extends AppController {
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3,'forcePageParam' => false,'pageSizeParam' => false]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         $name=Yii::$app->session->get('username');
+
         $first=Product::find()->where(['category_name'=>'Источники питания'])->limit(4)->all();
         $second=Product::find()->where(['category_name'=>'Светодиодные ленты'])->limit(4)->all();
         $third =Product::find()->where(['category_name'=>'Светодиоды'])->limit(4)->all();
         $fourth=Product::find()->where(['category_name'=>'Модули'])->limit(4)->all();
         $fifth =Product::find()->where(['category_name'=>'Коробочки'])->limit(4)->all();
-        $categories=Category::find()->all();
-        return $this->render('index',compact('pages','products','name','categories','first','second','third','fourth','fifth'));
+        return $this->render('search',compact('pages','products','name','first','second','third','fourth','fifth'));
     }
 
     public function actionCreateTable(){
@@ -92,7 +92,6 @@ class CategoryController extends AppController {
         $third =Product::find()->where(['category_name'=>'Светодиоды'])->limit(4)->all();
         $fourth=Product::find()->where(['category_name'=>'Модули'])->limit(4)->all();
         $fifth =Product::find()->where(['category_name'=>'Коробочки'])->limit(4)->all();
-        $categories=Category::find()->all();
-        return $this->render('search',compact('products','pages','search','categories','first','second','third','fourth','fifth'));
+        return $this->render('search',compact('products','pages','search','first','second','third','fourth','fifth'));
     }
 }

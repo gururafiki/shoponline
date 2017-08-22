@@ -43,7 +43,7 @@ $config = [
             'transport' => [
             'class' => 'Swift_SmtpTransport',
             'host' => 'uashared06.twinservers.net',
-            'username' => 'inna.shohina@electrovolt.kiev.ua',
+            'username' => 'info@electrovolt.kiev.ua',
             'password' => 'portugal1994',
             'port' => '465',
             'encryption' => 'ssl',
@@ -80,10 +80,13 @@ $config = [
                 'category/<category_parent>/<category_name>/<id:\d+>/<spec1>/<spec1_name>/<spec1_id:\d+>/<spec2>/<spec2_name>/<spec2_id:\d+>/<spec3>/<spec3_name>/<spec3_id:\d+>/<spec4>/<spec4_name>/<spec4_id:\d+>/<spec5>/<spec5_name>/<spec5_id:\d+>/<spec6>/<spec6_name>/<spec6_id:\d+>/byprice/<byprice_name>/<byprice_id:\d+>' => 'category/view',
 
                 'products/lists/<id:\d+>' => 'admin/products/lists',
-                'search' => 'category/search',
+                'index' => 'category/index',
                 'product/<id:\d+>' => 'product/view',
-                'register' => 'site/register',
-                'login' => 'site/login',
+                'question' => 'site/question',
+                'message' => 'site/message',
+                'register' => 'site/reg',
+                'auth' => 'site/auth',
+                'search' => 'category/search',
             ],
         ],
         

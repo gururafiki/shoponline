@@ -1,0 +1,8 @@
+[21-Aug-2017 06:31:14 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/asteamco/domains/electrovolt.kiev.ua/components/MenuWidget.php on line 121
+[21-Aug-2017 06:31:15 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/asteamco/domains/electrovolt.kiev.ua/components/MenuWidget.php on line 121
+[21-Aug-2017 16:56:11 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/asteamco/domains/electrovolt.kiev.ua/components/MenuWidget.php on line 60
+[21-Aug-2017 16:56:49 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/asteamco/domains/electrovolt.kiev.ua/components/MenuWidget.php on line 60
+[21-Aug-2017 16:56:51 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/asteamco/domains/electrovolt.kiev.ua/components/MenuWidget.php on line 60
+[21-Aug-2017 17:50:24 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home/asteamco/domains/electrovolt.kiev.ua/views/layouts/main.php on line 170
+[21-Aug-2017 18:01:23 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home/asteamco/domains/electrovolt.kiev.ua/views/layouts/main.php on line 64
+[21-Aug-2017 18:02:42 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']' in /home/asteamco/domains/electrovolt.kiev.ua/views/layouts/main.php on line 65

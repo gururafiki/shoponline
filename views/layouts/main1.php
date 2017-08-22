@@ -11,7 +11,6 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Dropdown;
-use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -44,7 +43,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'nav navbar-nav'],
         'items' => [
-            ['label' => 'Домой', 'url' => ['/'], 'options' => ['class' => 'waves-effect waves-light' ] ] ,
+            ['label' => 'Домой', 'url' => ['/category/index'], 'options' => ['class' => 'waves-effect waves-light' ] ] ,
             ['label' => 'О нас', 'url' => ['/site/about'],  'options' => ['class' => 'waves-effect waves-light' ] ],
             ['label' => 'Корзина', 'url' => ['#'],  'options' => ['class' => 'waves-effect waves-light', 'onclick' => 'return getCart()' ] ],
             ['label' => 'Контакты', 'url' => ['/site/contact'], 'options' => ['class' => 'waves-effect waves-light' ]],
@@ -60,8 +59,18 @@ AppAsset::register($this);
                 ],
             ])
             .'</li>',
-            ['label' => 'Авторизация', 'url' => ['/site/auth'],  'options' => ['class' => 'waves-effect waves-light' ] ],
-            ['label' => 'Регистрация', 'url' => ['/site/register'],  'options' => ['class' => 'waves-effect waves-light' ] ]
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Авторизация', 'url' => ['/site/login'], 'options' => ['class' => 'waves-effect waves-light' ]]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Выход (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'nav-btn waves-effect waves-light']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
         ],
     ]);
     // echo '<li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-light" role="button" aria-expanded="false">List <span class="caret"></span></a>';
@@ -102,39 +111,21 @@ AppAsset::register($this);
         </div>
         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
             <h3 style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;">ElectroVolt</h3>
-            <?php if(strpos(Url::to(''),'/site') === false && Url::to('')!='/' ):?>
-                <form class="col-md-12" action="/site/message" method="get" role="form">
-                    <div class="input-field col-md-4">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" name="name" type="text" class="validate">
-                        <label for="icon_prefix">Ваше имя</label>
-                    </div>
-                    <div class="input-field col-md-4">
-                        <i class="material-icons prefix">phone</i>
-                        <input id="icon_telephone" name="phone" type="tel" class="validate">
-                        <label for="icon_telephone">Ваш телефон</label>
-                    </div>
-                    <div class="text-center col-md-4">
-                        <button type="submit" class="btn btn-info waves-effect waves-light">Заказать звонок!</button>
-                    </div>
-                </form>
-            <?php else:?>
-                <h3 style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: purple;text-align: center;font-size:30px;">Лучшее решение для ваших идей!</h3>
-            <?php endif;?>
-                <div class="text-center col-md-12">
-                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
-                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
-                        <div class="col-md-10">info@electrovolt.kiev.ua<br> +38 (044) 277-49-36</div>
-                    </div>
-                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
-                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
-                        <div class="col-md-10">Татьяна<br> +38 (067) 466-93-69</div>
-                    </div>
-                    <div class="col-md-4" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);color: #009adb;text-align: center;font-size: 15px;">
-                        <div class="col-md-2" style="margin-top: 3px;"><i class="material-icons prefix" style="font-size: 35px;">phone</i></div>
-                        <div class="col-md-10">Инна<br> +38 (067) 405-03-35</div>
-                    </div>
+            <form class="col-md-12">
+                <div class="input-field col-md-4">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Ваше имя</label>
                 </div>
+                <div class="input-field col-md-4">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="icon_telephone" type="tel" class="validate">
+                    <label for="icon_telephone">Ваш телефон</label>
+                </div>
+                <div class="text-center col-md-4">
+                    <button type="button" class="btn btn-info waves-effect waves-light">Заказать звонок!</button>
+                </div>
+            </form>
         </div>
         <div title="Курс валют от ПриватБанк Украина" style="position: absolute;right: 0;" class="course btn btn-info waves-effect waves-light col-sm-12 col-lg-3 col-xs-12 col-md-3 hidden-xs hidden-sm">
             <?php
@@ -168,13 +159,13 @@ AppAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer> -->
-<footer class="page-footer info-color darken-1" if="footer" style="margin-top: 200px;">
+<footer class="page-footer info-color darken-1" if="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
           <p class="white-text center-on-small-only">О компании</p>
           <p class="white-text center-on-small-only">Получите полный перечень гарантий и услуг.</p>
-          <a href="#" class="btn btn-danger waves-effect waves-light">Перейти!</a>
+          <a href="http://mdbootstrap.com/getting-started/" class="btn btn-danger waves-effect waves-light">Перейти!</a>
 
         </div>
         <hr class="hidden-lg hidden-md">
@@ -182,13 +173,13 @@ AppAsset::register($this);
         <div class="col-md-5 text-center">
           <p class="white-text center-on-small-only">Ответы на вопросы</p>
           <ul>
-            <li><a href="/site/contact" class="grey-text text-lighten-3">Обратная связь</a>
+            <li><a href="https://mdbootstrap.com/MDB/live/Simple%20ecommerce%20homepage/index.html#" data-toggle="modal" data-target="#myModal" class="grey-text text-lighten-3">Обратная связь</a>
             </li>
-            <li><a class="grey-text text-lighten-3" href="#" target="_blank">Условия доставки</a>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">Условия доставки</a>
             </li>
-            <li><a class="grey-text text-lighten-3" href="#" target="_blank">Поддержка клиентов</a>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/support/" target="_blank">Поддержка клиентов</a>
             </li>
-            <li><a class="grey-text text-lighten-3" href="#" target="_blank">Сообщить об ошибке</a>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/bugs/" target="_blank">Сообщить об ошибке</a>
             </li>
 
 
@@ -198,9 +189,9 @@ AppAsset::register($this);
 
         <div class="col-md-3 text-center">
           <p class="white-text text-center"> Социальные сети</p>
-          <a target="_blank" href="#" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
-          <a target="_blank" href="#" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
-          <a target="_blank" href="#" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
+          <a target="_blank" href="https://www.facebook.com/mdbootstrap" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
+          <a target="_blank" href="https://twitter.com/MDBootstrap" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
+          <a target="_blank" href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
         </div>
       </div>
     </div>
